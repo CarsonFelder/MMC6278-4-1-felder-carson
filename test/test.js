@@ -133,7 +133,7 @@ describe("Music DB SQL Query Practice", () => {
         `docker exec -d mysql-sandbox mysql -u root -e "source docker-entrypoint-initdb.d/seed.sql"`
       );
       await db.query("USE music_db");
-      execSync("sleep 0.1");
+      setTimeout(() => {}, 100);
     });
     after(async () => {
       await db.query("DROP DATABASE music_db");
@@ -144,7 +144,7 @@ describe("Music DB SQL Query Practice", () => {
         `docker exec -d mysql-sandbox mysql -u root -e "source docker-entrypoint-initdb.d/seed.sql"`
       );
       await db.query("USE music_db");
-      execSync("sleep 0.1");
+      setTimeout(() => {}, 100);
     });
     it("06-insert.sql should insert row into songs table", async () => {
       const queryText = await fs.readFile(

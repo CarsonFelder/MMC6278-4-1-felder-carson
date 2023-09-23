@@ -8,11 +8,11 @@
   },
   "scripts": {
     "start": "npm run mysql && node index.js",
-    "test": "npm run mysql && mocha test/test.js --diff=false $FLAG --exit; npm run mysql:stop",
+    "test": "mocha test/test.js --diff=false $FLAG --exit",
     "test:watch": "set FLAG='--watch --watch-files \"queries/*.sql\"' && npm test",
     "test:watch:debug": "set DEBUG=true && npm run test:watch",
     "mysql": "npm run mysql:restart && npm run mysql:check",
-    "mysql:restart": "npm run mysql:stop; npm run mysql:start",
+    "mysql:restart": "npm run mysql:stop && npm run mysql:start",
     "mysql:start": "set FLAG=-d && npm run mysql:run",
     "mysql:start:log": "set FLAG=-it && npm run mysql:run",
     "mysql:start:shell": "npm run mysql:restart && npm run mysql:check && npm run mysql:shell",
